@@ -71,6 +71,7 @@ function toggleFavourite(id: number) {
 }
 
 export default {
+  transformRawItem,
   getAllItems,
   toggleFavourite
 }
