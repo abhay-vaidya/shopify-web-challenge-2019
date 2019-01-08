@@ -13,7 +13,7 @@ function getFavourites(items: Array<Item>) {
 function getResultIndices(items: Array<Item>, query: string) {
   let matchedIndices = [] as Array<number>
   for (let i = 0; i < items.length; i++) {
-    if (items[i].keywords.has(query)) {
+    if (items[i].keywords.has(query.toLowerCase())) {
       matchedIndices.push(i)
     }
   }

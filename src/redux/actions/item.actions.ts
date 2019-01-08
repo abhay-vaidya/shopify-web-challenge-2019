@@ -10,7 +10,7 @@ function transformRawItem(item, index) {
 
   // Split keywords by comma and remove any leading or trailing whitespace
   const keywordsArray = keywords.split(',').map((keyword) => {
-    return keyword.trim()
+    return keyword.trim().toLowerCase()
   })
   const keywordsSet = new Set(keywordsArray)
 
