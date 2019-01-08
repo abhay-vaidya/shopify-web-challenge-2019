@@ -1,16 +1,12 @@
-@import '../../assets/variables.scss';
 .home {
-  padding-bottom: 45px;
-  .subtitle {
-    margin: 45px 0;
-    font-size: 30px;
-    color: $blue;
-  }
-  .home-options {
-    margin-bottom: 45px;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-  .rumi-button-rounded {
-    margin-bottom: 16px;
+  .search-wrapper {
+    margin: 15px 0;
+  }
+  .results-wrapper {
+    flex: 1;
   }
 }

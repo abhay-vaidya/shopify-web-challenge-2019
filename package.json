@@ -16,6 +16,7 @@
     "dotenv": "^6.2.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
+    "he": "^1.2.0",
     "i": "^0.3.6",
     "node-sass": "^4.11.0",
     "npm": "^6.5.0",
@@ -27,6 +28,7 @@
     "react-scripts": "2.1.2",
     "react-select": "^2.2.0",
     "react-test-renderer": "^16.7.0",
+    "redux-devtools-extension": "^2.13.7",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "typescript": "^3.2.2"
@@ -46,7 +48,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.7"
-  }
+  "devDependencies": {}
 }

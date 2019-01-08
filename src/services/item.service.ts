@@ -5,8 +5,8 @@ const itemLimit = process.env.REACT_APP_ITEM_LIMIT
 
 const getItems = () =>
   axios
-    .get(`${basePath}/swm_waste_wizard_APR`)
-    .then((response) => response)
+    .get(`${basePath}/swm_waste_wizard_APR?limit=${itemLimit}`)
+    .then((response) => response.data)
 
 export default {
   getItems

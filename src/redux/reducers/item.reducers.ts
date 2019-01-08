@@ -36,6 +36,11 @@ const reducer = (state = initialState, action: { type: string; body: any }) => {
         loadingItems: false,
         loadingItemsError: true
       }
+    case itemConstants.TOGGLE_FAVOURITE:
+      return {
+        ...state,
+        items: action.body
+      }
     default:
       return state
   }
