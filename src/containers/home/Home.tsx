@@ -12,16 +12,32 @@ interface HomeProps {
   items: Array<ItemType>
 }
 
-class Home extends Component<HomeProps> {
+interface HomeState {
+  displayItemsIndices: Set<number>
+}
+
+class Home extends Component<HomeProps, HomeState> {
+  state = {
+    displayItemsIndices: new Set()
+  }
+
   private onSearch = (value: string) => {
-    console.log(value)
+    const { items } = this.props
+    let matchedItems = new Set()
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].keywords.has(value)) {
+        matchedItems.add(i)
+      }
+    }
+    this.setState({ displayItemsIndices: matchedItems })
   }
 
   private onClear = () => {
-    console.log('CLEARED')
+    this.setState({ displayItemsIndices: new Set() })
   }
 
   render() {
+    const { displayItemsIndices } = this.state
     return (
       <div className="home">
         <Banner headline="Toronto Waste Lookup" />
@@ -33,8 +49,10 @@ class Home extends Component<HomeProps> {
               placeholder="Search..."
             />
           </div>
-          {this.props.items.map((item) => {
-            return <Item key={item.title} item={item} />
+          {this.props.items.map((item, index) => {
+            return (
+              displayItemsIndices.has(index) && <Item key={index} item={item} />
+            )
           })}
         </Container>
       </div>
