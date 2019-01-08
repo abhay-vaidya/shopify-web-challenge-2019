@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Item as ItemType } from '../../types/item'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Row, Col } from 'react-grid-system'
+import { ItemActions } from '../../redux/actions'
+
 import './Item.scss'
 
 interface ItemProps {
   item: ItemType
+  key: number
+  toggleFavourite: (id: number) => void
 }
 
 class Item extends Component<ItemProps> {
   private toggleFavourite = () => {
-    console.log('TOGGLING')
+    this.props.toggleFavourite(this.props.item.id)
   }
 
   render() {
@@ -26,7 +31,7 @@ class Item extends Component<ItemProps> {
             >
               <FontAwesomeIcon
                 icon="star"
-                color={item.favourited ? `#159957` : '#aaa'}
+                color={item.favourited ? '#159957' : '#aaa'}
                 size="sm"
               />
             </div>
@@ -46,4 +51,13 @@ class Item extends Component<ItemProps> {
   }
 }
 
-export default Item
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleFavourite: (id: number) => dispatch(ItemActions.toggleFavourite(id))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Item)
