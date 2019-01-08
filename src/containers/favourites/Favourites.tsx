@@ -8,11 +8,13 @@ interface FavouritesProps {
   favourites: Array<ItemType>
 }
 
+const MIN_FAVOURITES_REQUIRED = 2
+
 class Favourites extends Component<FavouritesProps> {
   render() {
     const { favourites } = this.props
 
-    if (favourites.length < 2) return null
+    if (favourites.length < MIN_FAVOURITES_REQUIRED) return null
 
     return (
       <div className="favourites-wrapper">
