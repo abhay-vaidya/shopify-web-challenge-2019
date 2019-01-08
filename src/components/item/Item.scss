@@ -1,0 +1,27 @@
+@import '../../assets/variables.scss';
+
+.item-wrapper {
+  padding: 10px 0;
+
+  .title-wrapper {
+    display: flex;
+
+    .favourite-button {
+      cursor: pointer;
+      padding: 0 10px;
+    }
+  }
+
+  @media (min-width: $breakpoint-phone) {
+    .description-wrapper {
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+}
