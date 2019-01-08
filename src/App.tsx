@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import Home from './containers/home/Home'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faStar } from '@fortawesome/free-solid-svg-icons'
 import { ItemActions } from './redux/actions'
 import './App.scss'
 
-library.add(faSearch)
+library.add(faSearch, faStar)
 
 interface AppProps {
   getAllItems: () => void
