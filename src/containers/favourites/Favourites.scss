@@ -1,0 +1,10 @@
+@import '../../assets/variables.scss';
+
+.favourites-wrapper {
+  padding-bottom: 10px;
+  background-color: $green-light;
+
+  h1 {
+    color: $green;
+  }
+}
