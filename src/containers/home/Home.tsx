@@ -5,6 +5,7 @@ import Banner from '../../components/banner/Banner'
 import Search from '../../components/search/Search'
 import Item from '../../components/item/Item'
 import { State } from '../../redux/reducers'
+import { getFavourites, getResultIndices } from '../../utilities/item.utils'
 import { Item as ItemType } from '../../types/item'
 import Favourites from '../../containers/favourites/Favourites'
 import './Home.scss'
@@ -14,43 +15,30 @@ interface HomeProps {
 }
 
 interface HomeState {
-  displayItemsIndices: Set<number>
+  resultIndices: Array<number>
 }
 
 class Home extends Component<HomeProps, HomeState> {
   state = {
-    displayItemsIndices: new Set()
+    resultIndices: []
   }
 
   private onSearch = (value: string) => {
-    const { items } = this.props
-    let matchedItems = new Set()
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].keywords.has(value)) {
-        matchedItems.add(i)
-      }
-    }
-    this.setState({ displayItemsIndices: matchedItems })
-  }
-
-  private getFavourites = () => {
-    const { items } = this.props
-    let favourites = [] as Array<ItemType>
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].favourited) {
-        favourites.push(items[i])
-      }
-    }
-    return favourites
+    const resultIndices = getResultIndices(this.props.items, value)
+    this.setState({ resultIndices })
   }
 
   private onClear = () => {
-    this.setState({ displayItemsIndices: new Set() })
+    this.setState({ resultIndices: [] })
   }
 
   render() {
-    const { displayItemsIndices } = this.state
-    const favourites = this.getFavourites()
+    const { resultIndices } = this.state
+    const { items } = this.props
+    const results = resultIndices.map((index) => (
+      <Item key={index} item={items[index]} />
+    ))
+    const favourites = getFavourites(items)
     return (
       <div className="home">
         <Banner headline="Toronto Waste Lookup" />
@@ -64,15 +52,7 @@ class Home extends Component<HomeProps, HomeState> {
           </Container>
         </div>
         <div className="results-wrapper">
-          <Container>
-            {this.props.items.map((item, index) => {
-              return (
-                displayItemsIndices.has(index) && (
-                  <Item key={index} item={item} />
-                )
-              )
-            })}
-          </Container>
+          <Container>{results}</Container>
         </div>
         <Favourites favourites={favourites} />
       </div>
