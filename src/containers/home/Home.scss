@@ -1,0 +1,16 @@
+@import '../../assets/variables.scss';
+.home {
+  padding-bottom: 45px;
+  .subtitle {
+    margin: 45px 0;
+    font-size: 30px;
+    color: $blue;
+  }
+  .home-options {
+    margin-bottom: 45px;
+  }
+
+  .rumi-button-rounded {
+    margin-bottom: 16px;
+  }
+}

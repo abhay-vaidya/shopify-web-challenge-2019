@@ -1,0 +1,14 @@
+@import '../../assets/variables.scss';
+
+.banner-body {
+  background-color: $green;
+  background-image: linear-gradient(120deg, $blue, $green);
+  padding: 20px;
+  text-align: center;
+
+  .banner-headline {
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+  }
+}

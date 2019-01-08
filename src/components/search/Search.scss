@@ -1,0 +1,33 @@
+@import '../../assets/variables.scss';
+
+.search-bar-wrapper {
+  width: 100%;
+  display: flex;
+  margin: 15px 0;
+
+  .search-bar {
+    margin-right: 15px;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    flex: 1;
+    padding: 10px;
+    font-size: 1.2em;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search-button {
+    padding: 10px 12px;
+    background: $green;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
