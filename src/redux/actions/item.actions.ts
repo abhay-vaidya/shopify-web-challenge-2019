@@ -8,8 +8,10 @@ function transformRawItem(item, index) {
   // Body comes in as encoded HTML, we must decode it to properly render
   const decodedBody = he.decode(body)
 
-  // Split keywords by comma and remove any leading or trailing whitespace
-  const cleanedKeywords = keywords.trim().toLowerCase()
+  const cleanedKeywords = keywords
+    .trim() // Remove leading or trailing whitespace
+    .replace(/,$/, '') // Remove trailing commas
+    .toLowerCase()
 
   return {
     id: index,
