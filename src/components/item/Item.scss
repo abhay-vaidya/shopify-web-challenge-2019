@@ -12,6 +12,10 @@
     }
   }
 
+  .description-wrapper {
+    margin: 10px;
+  }
+
   @media (min-width: $breakpoint-phone) {
     .description-wrapper {
       ul {
