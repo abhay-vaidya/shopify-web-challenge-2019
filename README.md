@@ -41,4 +41,6 @@ You will need the following environment variables to serve the app:
 ### Implementation
 ###### Node.js, React, Redux, TypeScript, Jest
 
-Since the Waste Wizard Lookup Data is a data-dump and not a typical API that accepts query parameters, I chose to download the data when the main App component loads, which is at the beginning. This raw data is transformed and stored in Redux, where it can be accessed by the various components in the application. When the user submits a query, the app performs a search through the stored data to find matches by keyword. Managing favourites is also handled via Redux.
+Since the Waste Wizard Lookup Data is a data-dump and not a typical API that accepts query parameters, I chose to download the data when the main App component loads, which is at the beginning. This raw data is transformed and stored in Redux, where it can be accessed by the various components in the application. When the user submits a query, the app performs a search through the stored data to find matches by keyword.
+
+Managing favourites is also handled via Redux. Favourites are persisted between page refreshes as they are also stored in the browser session. When the page loads, the application checks to see if favourites exist in session storage, and if so, populates the data accordingly. Favourites get cleared when the user closes the browser.
