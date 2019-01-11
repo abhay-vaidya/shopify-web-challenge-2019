@@ -7,7 +7,7 @@ const mockItems = [
     category: 'Garbage',
     favourited: false,
     id: 0,
-    keywords: new Set(['plastic', 'trash', 'garbage', 'common']),
+    keywords: 'plastic, trash, garbage, common',
     title: 'Garbage (wrapping and tying)'
   },
   {
@@ -16,7 +16,7 @@ const mockItems = [
     category: 'Compost',
     favourited: true,
     id: 52,
-    keywords: new Set(['food', 'compost', 'green', 'common']),
+    keywords: 'food, compost, green, common',
     title: 'Banana Peel'
   }
 ]
