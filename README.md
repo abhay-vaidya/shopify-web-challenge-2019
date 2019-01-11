@@ -38,12 +38,6 @@ You will need the following environment variables to serve the app:
 ### Running Tests
 `npm run test`
 
-### Assumptions
-The instructions state:
-> Performing a search should render a list of potential matching items based on keywords
-
-Each item in the data source contains a list of words/phrases separated by commas. I am assuming each "keyword" here is the word or phrase separated by the comma. You must search for the exact keyword or phrase to get results (i.e. rope, vacuum cleaner, etc.) in this current implementation. For future implementations, I would likely look for whether or not the given user query is a substring of any of the keywords to allow for more leniency when searching for items.
-
 ### Implementation
 ###### Node.js, React, Redux, TypeScript, Jest
 
