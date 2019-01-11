@@ -1,8 +1,13 @@
 import { itemConstants } from '../constants/index'
 import { itemService } from '../../services'
+import {
+  updateSessionFavourite,
+  getSessionFavourites
+} from '../../utilities/session.utils'
+import { Item } from '../../types/item'
 import he from 'he'
 
-function transformRawItem(item, index) {
+function transformRawItem(item, index: number) {
   const { body, category, title, keywords } = item
 
   // Body comes in as encoded HTML, we must decode it to properly render
@@ -23,6 +28,14 @@ function transformRawItem(item, index) {
   }
 }
 
+function populateFavourites(itemArray: Array<Item>) {
+  const sessionFavourites = getSessionFavourites() as Set<number>
+
+  sessionFavourites.forEach((index) => {
+    itemArray[index].favourited = true
+  })
+}
+
 function getAllItems() {
   return async (dispatch) => {
     dispatch({
@@ -30,12 +43,15 @@ function getAllItems() {
     })
     try {
       const rawArray = await itemService.getItems()
-      const newResponse = rawArray.map((item, index) => {
+      const itemArray = rawArray.map((item, index) => {
         return transformRawItem(item, index)
       })
+
+      populateFavourites(itemArray)
+
       return dispatch({
         type: itemConstants.GET_ALL_ITEMS_SUCCESS,
-        body: newResponse
+        body: itemArray
       })
     } catch (error) {
       return dispatch({
@@ -55,7 +71,9 @@ function toggleFavourite(id: number) {
         return item
       }
 
-      // Otherwise toggle the favourited status
+      // Otherwise update the session and toggle the favourited status
+      updateSessionFavourite(index, item.favourited)
+
       return {
         ...item,
         favourited: !item.favourited
@@ -70,6 +88,7 @@ function toggleFavourite(id: number) {
 }
 
 export default {
+  populateFavourites,
   transformRawItem,
   getAllItems,
   toggleFavourite

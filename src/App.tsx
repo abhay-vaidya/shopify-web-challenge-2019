@@ -5,6 +5,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearch, faStar } from '@fortawesome/free-solid-svg-icons'
 import { ItemActions } from './redux/actions'
+import { initializeSessionStorage } from './utilities/session.utils'
 import './App.scss'
 
 library.add(faSearch, faStar)
@@ -14,6 +15,7 @@ interface AppProps {
 }
 class App extends Component<AppProps> {
   componentDidMount() {
+    initializeSessionStorage()
     this.props.getAllItems()
   }
 
