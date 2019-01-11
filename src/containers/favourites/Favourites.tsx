@@ -20,9 +20,11 @@ class Favourites extends Component<FavouritesProps> {
       <div className="favourites-wrapper">
         <Container>
           <h1>Favourites</h1>
-          {favourites.map((item, index) => {
-            return <Item key={index} item={item} />
-          })}
+          <div className="favourites-content">
+            {favourites.map((item, index) => {
+              return <Item key={index} item={item} />
+            })}
+          </div>
         </Container>
       </div>
     )
