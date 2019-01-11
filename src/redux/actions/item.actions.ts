@@ -3,11 +3,11 @@ import { itemService } from '../../services'
 import {
   updateSessionFavourite,
   getSessionFavourites
-} from '../../utilities/session.util'
+} from '../../utilities/session.utils'
 import { Item } from '../../types/item'
 import he from 'he'
 
-function transformRawItem(item, index) {
+function transformRawItem(item, index: number) {
   const { body, category, title, keywords } = item
 
   // Body comes in as encoded HTML, we must decode it to properly render
@@ -88,6 +88,7 @@ function toggleFavourite(id: number) {
 }
 
 export default {
+  populateFavourites,
   transformRawItem,
   getAllItems,
   toggleFavourite

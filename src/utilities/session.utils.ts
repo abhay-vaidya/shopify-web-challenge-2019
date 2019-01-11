@@ -4,7 +4,7 @@ function initializeSessionStorage() {
   }
 }
 
-function updateSessionFavourite(index, isCurrentlyFavourited) {
+function updateSessionFavourite(index: number, isCurrentlyFavourited: boolean) {
   const favouritesString = sessionStorage.getItem('favourites')
   if (favouritesString !== null) {
     let favourites = new Set(JSON.parse(favouritesString))
