@@ -4,6 +4,7 @@ import { Container } from 'react-grid-system'
 import Banner from '../../components/banner/Banner'
 import Search from '../../components/search/Search'
 import Item from '../../components/item/Item'
+import Loading from '../../components/loading/Loading'
 import { State } from '../../redux/reducers'
 import { getFavourites, getResultIndices } from '../../utilities/item.utils'
 import { Item as ItemType } from '../../types/item'
@@ -12,6 +13,7 @@ import './Home.scss'
 
 interface HomeProps {
   items: Array<ItemType>
+  loadingItems: boolean
 }
 
 interface HomeState {
@@ -34,11 +36,17 @@ class Home extends Component<HomeProps, HomeState> {
 
   render() {
     const { resultIndices } = this.state
-    const { items } = this.props
+    const { items, loadingItems } = this.props
+
+    if (loadingItems) {
+      return <Loading />
+    }
+
     const results = resultIndices.map((index) => (
       <Item key={index} item={items[index]} />
     ))
     const favourites = getFavourites(items)
+
     return (
       <div className="home">
         <Banner headline="Toronto Waste Lookup" />
@@ -62,7 +70,8 @@ class Home extends Component<HomeProps, HomeState> {
 
 const mapStateToProps = (state: State) => {
   return {
-    items: state.itemReducers.items
+    items: state.itemReducers.items,
+    loadingItems: state.itemReducers.loadingItems
   }
 }
 
