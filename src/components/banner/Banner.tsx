@@ -10,7 +10,7 @@ class Banner extends Component<BannerProps> {
   render() {
     const { headline } = this.props
     return (
-      <div className="banner-body">
+      <div className="banner-wrapper">
         <Container>
           <h1 className="banner-headline">{headline}</h1>
         </Container>
