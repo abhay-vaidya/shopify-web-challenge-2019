@@ -6,11 +6,12 @@
 
   .search-bar {
     margin-right: 15px;
-    border: 1px solid #aaaaaa;
+    border: 1px solid $grey;
     border-radius: 2px;
     flex: 1;
     padding: 10px;
     font-size: 1.2em;
+    -webkit-appearance: textfield;
 
     &:focus {
       outline: none;
@@ -23,7 +24,12 @@
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    transition: all 300ms ease;
+
+    &:hover {
+      background: $green-dark;
+    }
 
     &:focus {
       outline: none;

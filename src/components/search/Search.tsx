@@ -43,7 +43,7 @@ class Search extends Component<SearchProps, SearchState> {
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
           className="search-bar"
-          type="text"
+          type="search"
           placeholder={this.props.placeholder}
         />
         <button onClick={this.onSubmit} className="search-button">
