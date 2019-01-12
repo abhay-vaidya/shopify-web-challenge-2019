@@ -16,6 +16,10 @@
   }
 
   @media (max-width: $breakpoint-phone) {
+    .favourites-content {
+      height: 120px;
+    }
+
     h1 {
       font-size: 26px;
     }
