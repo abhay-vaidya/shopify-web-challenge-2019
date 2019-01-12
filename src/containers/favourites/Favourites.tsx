@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row } from 'react-grid-system'
+import { Container } from 'react-grid-system'
 import Item from '../../components/item/Item'
 import { Item as ItemType } from '../../types/item'
 import './Favourites.scss'
@@ -17,7 +17,7 @@ class Favourites extends Component<FavouritesProps> {
     if (favourites.length < MIN_FAVOURITES_REQUIRED) return null
 
     return (
-      <div className="favourites-wrapper">
+      <section className="favourites-wrapper">
         <Container>
           <h1>Favourites</h1>
           <div className="favourites-content">
@@ -26,7 +26,7 @@ class Favourites extends Component<FavouritesProps> {
             })}
           </div>
         </Container>
-      </div>
+      </section>
     )
   }
 }
