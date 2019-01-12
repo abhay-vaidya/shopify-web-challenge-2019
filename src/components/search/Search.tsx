@@ -24,29 +24,22 @@ class Search extends Component<SearchProps, SearchState> {
     })
   }
 
-  private handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      event.stopPropagation()
-      this.onSubmit()
-    }
-  }
-
-  onSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
     this.props.onSearch(this.state.value)
+    event.currentTarget.blur()
   }
 
   render() {
     return (
-      <div className="search-bar-wrapper">
+      <form action="#" onSubmit={this.handleSubmit} className="search-bar-wrapper">
         <input
-          onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
           className="search-bar"
           type="search"
           placeholder={this.props.placeholder}
         />
-        <button onClick={this.onSubmit} className="search-button">
+        <button className="search-button">
           <FontAwesomeIcon
             icon="search"
             color="white"
@@ -54,7 +47,7 @@ class Search extends Component<SearchProps, SearchState> {
             size="2x"
           />
         </button>
-      </div>
+      </form>
     )
   }
 }
