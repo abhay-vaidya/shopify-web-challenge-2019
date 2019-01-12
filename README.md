@@ -30,6 +30,7 @@ You will need the following environment variables to serve the app:
 | `REACT_APP_API_BASE`   | `https://secure.toronto.ca/cc_sr_v1/data` | The Waste Wizard Lookup Data source |
 | `REACT_APP_ITEM_LIMIT` | `1000`                                    | Item limit for data source          |
 
+This allows for swapping the data source and/or item limit without needing a code change.
 
 ### Running locally
 1. `npm install`
@@ -41,6 +42,6 @@ You will need the following environment variables to serve the app:
 ### Implementation
 ###### Node.js, React, Redux, TypeScript, Jest
 
-Since the Waste Wizard Lookup Data is a data-dump and not a typical API that accepts query parameters, I chose to download the data when the main App component loads, which is at the beginning. This raw data is transformed and stored in Redux, where it can be accessed by the various components in the application. When the user submits a query, the app performs a search through the stored data to find matches by keyword.
+Since the Waste Wizard Lookup Data is a data-dump and not a typical API that accepts query parameters, I chose to download the data when the main App component loads, which is at the beginning. This raw data is transformed and stored in Redux, where it can be accessed by the various components in the application. When the user submits a query, the app performs a search through the stored data to find matches by keyword. Currently, searches are only performed if the user enters more than 1 character. This is to reduce computation for insignificant queries.
 
 Managing favourites is also handled via Redux. Favourites are persisted between page refreshes as they are also stored in the browser session. When the page loads, the application checks to see if favourites exist in session storage, and if so, populates the data accordingly. Favourites get cleared when the user closes the browser.
